@@ -38,9 +38,16 @@ class Plugin extends PluginBase
     public function registerComponents()
     {
         return [
-            'Cleanse\Twitch\Components\Streamers' => 'twitchStreamers',
-            'Cleanse\Twitch\Components\StreamersMini' => 'twitchStreamersMini',
-            'Cleanse\Twitch\Components\StreamersList' => 'twitchStreamersList',
+            'Cleanse\Twitch\Components\Streamers'       => 'cleanseTwitchStreamers',
+            'Cleanse\Twitch\Components\Request'         => 'cleanseTwitchRequest',
+            'Cleanse\Twitch\Components\Requested'         => 'cleanseTwitchRequested',
+
+            //Not needed?
+            'Cleanse\Twitch\Components\StreamersMini'   => 'cleanseTwitchMini',
+            'Cleanse\Twitch\Components\StreamersList'   => 'cleanseTwitchList',
+
+            //Make obsolete
+            'Cleanse\Twitch\Components\StreamersUpdate' => 'cleanseTwitchStreamersUpdate',
         ];
     }
 
@@ -128,13 +135,13 @@ class Plugin extends PluginBase
      */
     public function registerSchedule($schedule)
     {
-        $schedule->call(function () {
-            $update = new UpdateStreams;
-            $streams = $update->getList();
-
-            foreach ($streams as $streamers) {
-                Queue::push('\Cleanse\Twitch\Classes\Jobs\GetStreams', ['streamers' => $streamers]);
-            }
-        })->everyFiveMinutes();
+//        $schedule->call(function () {
+//            $update = new UpdateStreams;
+//            $streams = $update->getList();
+//
+//            foreach ($streams as $streamers) {
+//                Queue::push('\Cleanse\Twitch\Classes\Jobs\GetStreams', ['streamers' => $streamers]);
+//            }
+//        })->everyFiveMinutes();
     }
 }
