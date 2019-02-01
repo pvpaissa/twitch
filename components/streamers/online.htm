@@ -1,0 +1,38 @@
+{% if streamers.count > 0 %}
+<div class="row">
+    {% for streamer in streamers %}
+    <div class="article col-lg-4">
+        <a href="//www.twitch.tv/{{ streamer.name }}" title="{{ streamer.status }}" target="_blank">
+            <img class="article-img-top"
+                 src="https://static-cdn.jtvnw.net/previews-ttv/live_user_{{ streamer.name }}-640x360.jpg">
+        </a>
+
+        <div class="d-flex mt-2">
+            <img class="twitch-avatar mr-2"
+                 src="{{ streamer.logo ?: '/themes/pvpaissa/assets/images/nice_job.png' }}">
+            <div class="flex-fill">
+                <div class="d-flex justify-content-between">
+                    <a href="//www.twitch.tv/{{ streamer.name }}"
+                       title="{{ streamer.status }}" target="_blank">
+                        <h5 class="mb-0">{{ streamer.name|upper }}</h5>
+                    </a>
+                    <p class="d-block d-lg-none mb-0">
+                        <span class="badge badge-primary">{{ streamer.viewers }}</span>
+                    </p>
+                </div>
+                <p class="text-white">{{ streamer.status }}</p>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% else %}
+<p class="list-group-item no-streams">
+    There are no streamers live.
+</p>
+{% endif %}
+
+<div class="more-news text-center">
+    <hr class="d-none d-md-block">
+    <a class="btn btn-outline-primary btn-lg btn-md-block" href="/stream/request">Request Your Stream Be Listed</a>
+</div>
