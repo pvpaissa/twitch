@@ -1,0 +1,9 @@
+1.0.1:
+    - Adding streamer database migration.
+    - add_streamers_table.php
+1.0.3: Added Task Scheduling.
+1.0.4: Backend addition.
+1.0.5:
+    - Search Support.
+    - Public streamers list.
+    - Public streamer page.
