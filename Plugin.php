@@ -15,6 +15,8 @@ use Cleanse\Twitch\Classes\UpdateStreams;
  */
 class Plugin extends PluginBase
 {
+    public $require = ['Cleanse.Feedback'];
+
     /**
      * Returns information about the Twitch.tv Plugin.
      *
@@ -135,13 +137,13 @@ class Plugin extends PluginBase
      */
     public function registerSchedule($schedule)
     {
-//        $schedule->call(function () {
-//            $update = new UpdateStreams;
-//            $streams = $update->getList();
-//
-//            foreach ($streams as $streamers) {
-//                Queue::push('\Cleanse\Twitch\Classes\Jobs\GetStreams', ['streamers' => $streamers]);
-//            }
-//        })->everyFiveMinutes();
+        $schedule->call(function () {
+            $update = new UpdateStreams;
+            $streams = $update->getList();
+
+            foreach ($streams as $streamers) {
+                Queue::push('\Cleanse\Twitch\Classes\Jobs\GetStreams', ['streamers' => $streamers]);
+            }
+        })->everyFiveMinutes();
     }
 }
