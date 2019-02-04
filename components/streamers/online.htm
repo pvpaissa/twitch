@@ -8,8 +8,11 @@
         </a>
 
         <div class="d-flex mt-2">
-            <img class="twitch-avatar mr-2"
-                 src="{{ streamer.logo ?: '/themes/pvpaissa/assets/images/nice_job.png' }}">
+            <a href="//www.twitch.tv/{{ streamer.name }}"
+               title="{{ streamer.status }}" target="_blank">
+                <img class="twitch-avatar mr-2"
+                    src="{{ streamer.logo ?: '/themes/pvpaissa/assets/images/nice_job.png' }}">
+            </a>
             <div class="flex-fill">
                 <div class="d-flex justify-content-between">
                     <a href="//www.twitch.tv/{{ streamer.name }}"
