@@ -1,7 +1,7 @@
 {% if streamers.count > 0 %}
 <div class="row">
     {% for streamer in streamers %}
-    <div class="article col-lg-4">
+    <div class="article col">
         <a href="//www.twitch.tv/{{ streamer.name }}" title="{{ streamer.status }}" target="_blank">
             <img class="article-img-top"
                  src="https://static-cdn.jtvnw.net/previews-ttv/live_user_{{ streamer.name }}-640x360.jpg">
