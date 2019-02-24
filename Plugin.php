@@ -7,6 +7,7 @@ use Controller;
 use Event;
 use Queue;
 use System\Classes\PluginBase;
+
 use Cleanse\Twitch\Models\Streamer;
 use Cleanse\Twitch\Classes\UpdateStreams;
 
@@ -40,16 +41,7 @@ class Plugin extends PluginBase
     public function registerComponents()
     {
         return [
-            'Cleanse\Twitch\Components\Streamers'       => 'cleanseTwitchStreamers',
-            'Cleanse\Twitch\Components\Request'         => 'cleanseTwitchRequest',
-            'Cleanse\Twitch\Components\Requested'         => 'cleanseTwitchRequested',
-
-            //Not needed?
-            'Cleanse\Twitch\Components\StreamersMini'   => 'cleanseTwitchMini',
-            'Cleanse\Twitch\Components\StreamersList'   => 'cleanseTwitchList',
-
-            //Make obsolete
-            'Cleanse\Twitch\Components\StreamersUpdate' => 'cleanseTwitchStreamersUpdate',
+            'Cleanse\Twitch\Components\Streamers'       => 'cleanseTwitchStreamers'
         ];
     }
 
